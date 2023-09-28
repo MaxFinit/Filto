@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="button_next">Дальше</string>
+    <string name="button_go">Поехали!</string>
+
+
+    <string name="welcome_1_title">Привет!</string>
+    <string name="welcome_1_text">Окунись в мир бесконечных вариаций и экспериментов со вкусом</string>
+    <string name="welcome_2_title">Персональные рецепты</string>
+    <string name="welcome_2_text">Мы будем рекомендовать вам только рецепты, которые отвечают вашим требованиям.</string>
+    <string name="welcome_3_title">Оценивай одной кнопкой</string>
+    <string name="welcome_3_text">Лайкайте и дизлайкайте рецепты, чтобы выбрать идеальное блюдо для себя! </string>
+
+</resources>
