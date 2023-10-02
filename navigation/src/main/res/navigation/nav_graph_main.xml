@@ -7,5 +7,16 @@
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.maxfin.filto.welcome.WelcomeFragment"
-        android:label="WelcomeFragment" />
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.maxfin.filto.feed.FeedFragment"
+        android:label="FeedFragment" />
+
 </navigation>

@@ -2,6 +2,8 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("org.jetbrains.kotlin.kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -20,6 +22,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     buildTypes {
@@ -41,14 +44,19 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":navigation"))
     implementation(project(":feature:welcome"))
     implementation(project(":feature:feed"))
+
+    implementation(project(":core:ui"))
 
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.androidx.navigation)
     implementation(libs.ui.material)
     implementation(libs.ui.view.binding)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
 
 

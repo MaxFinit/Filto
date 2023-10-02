@@ -4,11 +4,14 @@
     <color name="primaryColor">#CB5242</color>
     <color name="primaryDarkColor">#A4392B</color>
     <color name="primaryLightColor">#FFE6E2</color>
+    <color name="surface">#FFCCC5</color>
+    <color name="surface_pastel">#FFE6E2</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="white_50">#80FFFFFF</color>
 
+    <color name="transparent">#00FFFFFF</color>
 
     <color name="primaryTextColor">#ffffff</color>
 

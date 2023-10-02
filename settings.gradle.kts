@@ -17,6 +17,12 @@ dependencyResolutionManagement {
 rootProject.name = "Filto"
 include(":app")
 include(":core:ui")
+include(":core:network")
+include(":core:database")
+include(":navigation")
 include(":feature:welcome")
 include(":feature:feed")
 
+include(":core:common")
+include(":core:data")
+include(":core:model")

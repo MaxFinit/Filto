@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -57,6 +58,7 @@ class WelcomeFragment : Fragment(R.layout.fragment_welcome) {
         binding.next.setOnClickListener {
             val position = binding.welcomePager.currentItem
             if (position == dataFragments.lastIndex) {
+                findNavController().navigate(com.maxfin.filto.navigation.R.id.action_welcomeFragment_to_feedFragment)
 //                startNewNavigation(R.id.homeFragment)
 //                if (getMainActivity().mainViewModel.isSubOnboarding){
 //                    saveNavigate(R.id.action_homeFragment_to_paywallFragment)

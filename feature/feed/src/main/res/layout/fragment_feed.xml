@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface"
+    android:clipChildren="false"
+    tools:context=".FeedFragment">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/ic_logo"
+        android:fitsSystemWindows="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/primaryColor" />
+
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <com.maxfin.filto.feed.view.cardstack.CardStackView
+        android:id="@+id/feedCard"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/actions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:listitem="@layout/holder_feed_card" />
+
+
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/actions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="38dp"
+        android:layout_marginBottom="100dp"
+        app:constraint_referenced_ids="filter,dislike,like,favorites"
+        app:flow_horizontalStyle="spread_inside"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/filter"
+        style="@style/Button.Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:iconSize="48dp"
+        app:icon="@drawable/ic_button_filter" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dislike"
+        style="@style/Button.Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:iconSize="76dp"
+        app:icon="@drawable/ic_button_dislike" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/like"
+        style="@style/Button.Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:iconSize="76dp"
+        app:icon="@drawable/ic_button_like" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/favorites"
+        style="@style/Button.Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:iconSize="48dp"
+        app:icon="@drawable/ic_button_favorites" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,12 +38,15 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":navigation"))
     implementation(project(":core:ui"))
 
     implementation(libs.bundles.androidx)
+    implementation(libs.bundles.androidx.navigation)
     implementation(libs.ui.material)
     implementation(libs.ui.view.binding)
+    implementation(libs.ui.component.dots)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

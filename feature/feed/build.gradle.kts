@@ -2,6 +2,8 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("dagger.hilt.android.plugin")
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -17,6 +19,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        dataBinding = true
     }
 
     buildTypes {
@@ -38,13 +41,21 @@ android {
 }
 
 dependencies {
-
+    implementation(project(":navigation"))
     implementation(project(":core:ui"))
+    implementation(project(":core:common"))
+    implementation(project(":core:data"))
 
     implementation(libs.bundles.androidx)
+    implementation(libs.bundles.androidx.navigation)
+    implementation(libs.bundles.ui.fastAdapter)
     implementation(libs.ui.material)
     implementation(libs.ui.view.binding)
-    implementation(libs.ui.component.dots)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
 
     testImplementation(libs.junit)
