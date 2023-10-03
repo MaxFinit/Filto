@@ -35,4 +35,12 @@
     <string name="feed_filter_category_miscellaneous">Разное</string>
 
 
+    <string name="favorites_title">Мои избранные</string>
+    <string name="favorites_item_deleted">Вы удалили “Салат с говядиной”.</string>
+    <string name="favorites_item_restore">Восстановить</string>
+
+    <string name="recipe_ingredients_title">Ингредиенты</string>
+    <string name="recipe_cooking_title">Приготовление</string>
+
+
 </resources>

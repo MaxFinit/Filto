@@ -1,13 +1,11 @@
 package com.maxfin.filto.feed
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.maxfin.filto.feed.databinding.FragmentFeedBinding
 import com.maxfin.filto.feed.view.cardstack.CardStackLayoutManager
@@ -30,10 +28,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
     private val feedCardAdapter = ItemAdapter<FeedCardHolder>()
     private val feedCardFastAdapter = FastAdapter.with(feedCardAdapter)
 
-    private val feedCardListManager by lazy { CardStackLayoutManager(requireContext(), this).apply {
-        setTranslationInterval(8f)
-        setVisibleCount(1)
-    } }
+    private lateinit var feedCardListManager: CardStackLayoutManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +36,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
         setFragmentResultListener(
             FeedFilterFragment.resultKey
         ) { key, bundle ->
-          val category =  bundle.getString(
+            val category = bundle.getString(
                 FeedFilterFragment.resultKeyCategory
             )
             viewModel.setCategory(category.toString())
@@ -60,27 +55,23 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
         }
 
         binding.like.setOnClickListener {
-            val setting = SwipeAnimationSetting.Builder()
-                .setDirection(Direction.Right)
-                .setDuration(Duration.Normal.duration)
-                .setInterpolator(AccelerateInterpolator())
-                .build()
-            feedCardListManager.setSwipeAnimationSetting(setting)
-            binding.feedCard.swipe()
+            like()
         }
 
         binding.dislike.setOnClickListener {
-            val setting = SwipeAnimationSetting.Builder()
-                .setDirection(Direction.Left)
-                .setDuration(Duration.Normal.duration)
-                .setInterpolator(AccelerateInterpolator())
-                .build()
-            feedCardListManager.setSwipeAnimationSetting(setting)
-            binding.feedCard.swipe()
+            dislike()
+        }
+
+        binding.favorites.setOnClickListener {
+            saveNavigate(com.maxfin.filto.navigation.R.id.action_feedFragment_to_favoritesFragment)
         }
     }
 
     private fun initFeedCardList() {
+        feedCardListManager = CardStackLayoutManager(requireContext(), this).apply {
+            setTranslationInterval(8f)
+            setVisibleCount(1)
+        }
         binding.feedCard.layoutManager = feedCardListManager
         binding.feedCard.adapter = feedCardFastAdapter
 
@@ -88,7 +79,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
     }
 
     private fun observeMeal() {
-        viewModel.currentMeal.observe(viewLifecycleOwner) {meal ->
+        viewModel.currentMeal.observe(viewLifecycleOwner) { meal ->
             feedCardAdapter.set(listOf(FeedCardHolder(meal)))
             binding.feedCard.rewind()
         }
@@ -99,6 +90,19 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
     }
 
     override fun onCardSwiped(direction: Direction?) {
+        when (direction) {
+            Direction.Left -> {
+                dislike()
+            }
+
+            Direction.Right -> {
+                like()
+            }
+
+            Direction.Top -> {}
+            Direction.Bottom -> {}
+            null -> {}
+        }
         viewModel.getMeal()
     }
 
@@ -116,6 +120,26 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
 
     override fun onCardDisappeared(view: View?, position: Int) {
 
+    }
+
+    private fun like() {
+        swipeAnimation(Direction.Right)
+
+        viewModel.addToFavorites()
+    }
+
+    private fun dislike() {
+        swipeAnimation(Direction.Left)
+    }
+
+    private fun swipeAnimation(direction: Direction) {
+        val setting = SwipeAnimationSetting.Builder()
+            .setDirection(direction)
+            .setDuration(Duration.Normal.duration)
+            .setInterpolator(AccelerateInterpolator())
+            .build()
+        feedCardListManager.setSwipeAnimationSetting(setting)
+        binding.feedCard.swipe()
     }
 
 }

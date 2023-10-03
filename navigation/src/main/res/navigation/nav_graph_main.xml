@@ -23,6 +23,12 @@
         <action
             android:id="@+id/action_feedFragment_to_feedFilterFragment"
             app:destination="@id/feedFilterFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
     </fragment>
 
     <dialog
@@ -30,5 +36,26 @@
         android:name="com.maxfin.filto.feed.FeedFilterFragment"
         android:label="FeedFilterFragment"
         />
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.maxfin.filto.favorites.FavoritesFragment"
+        android:label="FavoritesFragment" >
+
+        <action
+            android:id="@+id/action_favoritesFragment_to_recipeFragment"
+            app:destination="@id/recipeFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/recipeFragment"
+        android:name="com.maxfin.filto.recipe.RecipeFragment"
+        android:label="RecipeFragment" >
+
+        <argument
+            android:name="idMeal"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

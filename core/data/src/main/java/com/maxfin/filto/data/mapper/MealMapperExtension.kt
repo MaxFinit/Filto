@@ -1,6 +1,7 @@
 package com.maxfin.filto.data.mapper
 
 import com.maxfin.filto.data.model.Meal
+import com.maxfin.filto.database.entity.FavoritesEntity
 import com.maxfin.filto.network.dto.MealDto
 
 fun List<MealDto>.mapToMeal() : List<Meal>{
@@ -45,6 +46,28 @@ fun List<MealDto>.mapToMeal() : List<Meal>{
             dateModified = it.dateModified
 
         ))
+    }
+    return listMeal
+}
+
+fun List<FavoritesEntity>.mapEntityToMeal() : List<Meal>{
+    val listMeal = mutableListOf<Meal>()
+    this.forEach {
+        listMeal.add(Meal(
+         idMeal = it.id,
+            strMeal =  it.name,
+            strMealThumb =  it.image,
+            strDrinkAlternate = null,
+            strCategory = null,
+            strArea = null,
+            strInstructions = null,
+            strTags = null,
+            strYoutube = null,
+            strIngredient = mapOf(),
+            strSource = null,
+            strImageSource = null,
+            strCreativeCommonsConfirmed = null,
+            dateModified = null))
     }
     return listMeal
 }

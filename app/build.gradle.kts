@@ -47,6 +47,8 @@ dependencies {
     implementation(project(":navigation"))
     implementation(project(":feature:welcome"))
     implementation(project(":feature:feed"))
+    implementation(project(":feature:favorites"))
+    implementation(project(":feature:recipe"))
 
     implementation(project(":core:ui"))
 

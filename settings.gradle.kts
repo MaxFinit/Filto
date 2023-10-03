@@ -22,7 +22,10 @@ include(":core:database")
 include(":navigation")
 include(":feature:welcome")
 include(":feature:feed")
+include(":feature:favorites")
 
 include(":core:common")
 include(":core:data")
-include(":core:model")
+
+
+include(":feature:recipe")

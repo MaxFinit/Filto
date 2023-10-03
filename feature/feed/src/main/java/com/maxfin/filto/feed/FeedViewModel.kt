@@ -53,8 +53,25 @@ class FeedViewModel @Inject constructor(
         }
     }
 
+    fun addToFavorites() {
+        viewModelScope.launch {
+            mealDBRepository.addToFavorites(
+                id = _currentMeal.value!!.idMeal!!,
+                name = _currentMeal.value!!.strMeal!!,
+                image = _currentMeal.value!!.strMealThumb!!
+            ).collect {
+                when(it){
+                    is Result.Error -> {}
+                    is Result.Loading -> {}
+                    is Result.Success -> {}
+                }
+            }
 
-    fun setCategory(category : String){
+        }
+    }
+
+
+    fun setCategory(category: String) {
         _uiState.value = _uiState.value?.copy(category = category)
         getMeal()
     }
