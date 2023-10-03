@@ -12,4 +12,27 @@
     <string name="welcome_3_title">Оценивай одной кнопкой</string>
     <string name="welcome_3_text">Лайкайте и дизлайкайте рецепты, чтобы выбрать идеальное блюдо для себя! </string>
 
+    <string name="feed_filter_difficulty">Сложность</string>
+    <string name="feed_filter_easy">(5–30 мин)</string>
+    <string name="feed_filter_medium">(30–60 мин)</string>
+    <string name="feed_filter_hard">(от 60 мин)</string>
+
+    <string name="feed_filter_category_title">Категории</string>
+    <string name="feed_filter_category_search">Найти блюдо</string>
+    
+    
+    <string name="feed_filter_category_seafood">Рыба</string>
+    <string name="feed_filter_category_chicken">Птица</string>
+    <string name="feed_filter_category_beef">Мясо</string>
+    <string name="feed_filter_category_vegetarian">Здоровая еда</string>
+    <string name="feed_filter_category_starter">Закуски</string>
+    <string name="feed_filter_category_salads">Салаты</string>
+    <string name="feed_filter_category_side">Гарниры</string>
+    <string name="feed_filter_category_pasta">Паста</string>
+    <string name="feed_filter_category_breakfast">Завтраки</string>
+    <string name="feed_filter_category_desserts">Десерты</string>
+    <string name="feed_filter_category_vegan">Веган</string>
+    <string name="feed_filter_category_miscellaneous">Разное</string>
+
+
 </resources>

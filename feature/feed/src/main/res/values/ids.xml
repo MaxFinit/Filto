@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="id_feed_card_holder" type="id" />
+
+    <item name="id_feed_category_holder" type="id" />
 </resources>

@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/primaryDarkColor"
+            android:textColor="@color/redDark"
             android:text="@string/welcome_1_title" />
 
         <com.google.android.material.textview.MaterialTextView

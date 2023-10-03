@@ -7,4 +7,8 @@
         <item name="cardBackgroundColor">@color/surface_pastel</item>
     </style>
 
+    <style name="Sheet.Filter" parent="@style/Widget.Material3.BottomSheet.Modal">
+
+    </style>
+
 </resources>

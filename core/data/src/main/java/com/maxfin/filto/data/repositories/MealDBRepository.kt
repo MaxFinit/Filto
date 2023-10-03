@@ -19,20 +19,16 @@ class MealDBRepository @Inject constructor(
         emit(Result.Loading(false))
     }
 
-    fun filterMeal(
-        mealFilterArgs: MealFilterRequestArgs
-    ) = flow {
+    fun getMeal(category: String) = flow {
         emit(Result.Loading(true))
-        val source = mealDBNetwork.filterMeal(
-            mealFilterArgs
-        )
-        emit(source)
-        emit(Result.Loading(false))
-    }
 
-    fun randomMeal() = flow {
-        emit(Result.Loading(true))
-        when (val source = mealDBNetwork.randomMeal()) {
+        val source =  if (category.isEmpty()){
+            mealDBNetwork.randomMeal()
+        }else{
+            mealDBNetwork.filterMeal(MealFilterRequestArgs(category = category))
+        }
+
+        when (source) {
             is NetworkResult.Error -> {
                 emit(Result.Error(source.exception))
             }

@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maxfin.filto.common.Result
-import com.maxfin.filto.data.mapper.mapToMeal
 import com.maxfin.filto.data.model.Meal
 import com.maxfin.filto.data.repositories.MealDBRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,12 +19,14 @@ class FeedViewModel @Inject constructor(
     val uiState: LiveData<FeedUiState>
         get() = _uiState
 
-    private val _uiState = MutableLiveData<FeedUiState>()
+    private val _uiState = MutableLiveData<FeedUiState>().apply {
+        value = FeedUiState()
+    }
 
-    val mealList: LiveData<List<Meal>>
-        get() = _mealList
+    val currentMeal: LiveData<Meal>
+        get() = _currentMeal
 
-    private val _mealList = MutableLiveData<List<Meal>>()
+    private val _currentMeal = MutableLiveData<Meal>()
 
     init {
         getMeal()
@@ -34,7 +35,7 @@ class FeedViewModel @Inject constructor(
 
     fun getMeal() {
         viewModelScope.launch {
-            mealDBRepository.randomMeal().collect {
+            mealDBRepository.getMeal(_uiState.value?.category.toString()).collect {
                 when (it) {
                     is Result.Error -> {
                         _uiState.value = _uiState.value?.copy(hasError = true)
@@ -45,13 +46,17 @@ class FeedViewModel @Inject constructor(
                     }
 
                     is Result.Success -> {
-                        _mealList.value = it.data
+                        _currentMeal.value = it.data.random()
                     }
                 }
             }
         }
+    }
 
 
+    fun setCategory(category : String){
+        _uiState.value = _uiState.value?.copy(category = category)
+        getMeal()
     }
 
 

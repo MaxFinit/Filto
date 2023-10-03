@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="nameValue"
+            type="String" />
+
+        <variable
+            name="iconValue"
+            type="Integer" />
+
+        <variable
+            name="isSelectedValue"
+            type="Boolean" />
+
+
+    </data>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/iconButton"
+            style="@style/Button.Icon.Filled"
+            setBindingIconResource="@{iconValue}"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:clickable="false"
+            app:iconTint="@{isSelectedValue ?@color/white :@color/redMain}"
+            android:backgroundTint="@{isSelectedValue ?@color/redMain :@color/whiteSurface}"
+            app:iconSize="24dp"
+            tools:backgroundTint="@color/whiteSurface"
+            tools:icon="@drawable/ic_category_seafood" />
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/Text.Label.Small"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="@{nameValue}"
+            tools:text="Рыба" />
+
+    </LinearLayout>
+
+</layout>

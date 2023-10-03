@@ -42,7 +42,7 @@
             android:gravity="center"
             android:paddingVertical="16dp"
             android:paddingHorizontal="16dp"
-            android:textColor="@color/primaryDarkColor"
+            android:textColor="@color/redDark"
             android:background="@color/white"
             android:text="@{mealData.strMeal}"
             tools:text="Рыба речная" />

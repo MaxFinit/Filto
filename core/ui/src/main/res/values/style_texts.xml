@@ -44,7 +44,7 @@
     <style name="Text.Label.Small" parent="Text.Medium">
         <item name="android:textSize">11sp</item>
         <item name="lineHeight">16sp</item>
-        <item name="android:letterSpacing">+0.5</item>
+        <item name="android:letterSpacing">+0.05</item>
     </style>
 
 
