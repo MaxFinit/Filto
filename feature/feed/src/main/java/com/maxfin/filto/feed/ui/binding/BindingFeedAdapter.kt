@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import com.maxfin.filto.feed.databinding.ViewFeedIngredientsBinding
 import com.maxfin.filto.ui.floatDp
 
+//Как поступить здесь
 @BindingAdapter("formatIngredients")
 fun LinearLayout.formatIngredients(ingredients: Map<String, String>?) {
     this.removeAllViews()
