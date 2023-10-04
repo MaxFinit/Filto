@@ -3,6 +3,7 @@ package com.maxfin.filto.feed.ui.binding
 import android.graphics.RenderEffect
 import android.graphics.Shader
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -12,13 +13,13 @@ import com.maxfin.filto.ui.floatDp
 
 //Как поступить здесь
 @BindingAdapter("formatIngredients")
-fun LinearLayout.formatIngredients(ingredients: Map<String, String>?) {
+fun LinearLayout.formatIngredients(ingredients: Map<String?, String?>?) {
     this.removeAllViews()
     if (ingredients != null) {
         val inflater = LayoutInflater.from(this.context)
 
         for (ingredient in ingredients) {
-            if (ingredient.key.isNotEmpty()){
+            if (!ingredient.key.isNullOrEmpty() && !ingredient.key.isNullOrEmpty()){
                 val achievementView = ViewFeedIngredientsBinding.inflate(inflater, this, true)
 
                 achievementView.text.text = "${ingredient.key} - ${ingredient.value}"
