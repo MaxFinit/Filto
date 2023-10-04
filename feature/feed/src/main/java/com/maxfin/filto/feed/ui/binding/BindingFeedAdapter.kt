@@ -40,7 +40,7 @@ fun ImageView.setBlur(isBlur: Boolean) {
         }
     }else{
         if (isBlur){
-            this.alpha = 0.5F
+            this.alpha = 0.3F
         }else{
             this.alpha = 1F
         }
