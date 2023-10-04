@@ -6,6 +6,7 @@ import android.view.animation.AccelerateInterpolator
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.maxfin.filto.feed.databinding.FragmentFeedBinding
 import com.maxfin.filto.feed.view.cardstack.CardStackLayoutManager
@@ -16,6 +17,7 @@ import com.maxfin.filto.feed.view.cardstack.SwipeAnimationSetting
 import com.maxfin.filto.navigation.saveNavigate
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.ItemAdapter
+import com.mikepenz.fastadapter.select.getSelectExtension
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +29,7 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
 
     private val feedCardAdapter = ItemAdapter<FeedCardHolder>()
     private val feedCardFastAdapter = FastAdapter.with(feedCardAdapter)
+    private val feedCardSelectExtension = feedCardFastAdapter.getSelectExtension()
 
     private lateinit var feedCardListManager: CardStackLayoutManager
 
@@ -68,6 +71,13 @@ class FeedFragment : Fragment(R.layout.fragment_feed), CardStackListener {
     }
 
     private fun initFeedCardList() {
+        feedCardSelectExtension.apply {
+            isSelectable = true
+            selectWithItemUpdate = true
+            multiSelect = false
+            allowDeselection = true
+        }
+
         feedCardListManager = CardStackLayoutManager(requireContext(), this).apply {
             setTranslationInterval(8f)
             setVisibleCount(1)

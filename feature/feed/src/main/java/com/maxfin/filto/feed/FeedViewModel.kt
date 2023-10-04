@@ -46,7 +46,29 @@ class FeedViewModel @Inject constructor(
                     }
 
                     is Result.Success -> {
-                        _currentMeal.value = it.data.random()
+                        //Переделать : получать детально при клике
+                        detailsMeal(it.data.random().idMeal)
+//                        _currentMeal.value = it.data.random()
+                    }
+                }
+            }
+        }
+    }
+
+    fun detailsMeal(idMeal:String ) {
+        viewModelScope.launch {
+            mealDBRepository.detailsMeal(idMeal).collect {
+                when (it) {
+                    is Result.Error -> {
+                        _uiState.value = _uiState.value?.copy(hasError = true)
+                    }
+
+                    is Result.Loading -> {
+                        _uiState.value = _uiState.value?.copy(isLoading = it.isLoad)
+                    }
+
+                    is Result.Success -> {
+                        _currentMeal.value = it.data.first()
                     }
                 }
             }

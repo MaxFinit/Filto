@@ -14,7 +14,7 @@ data class MealFilterRequestArgs(
 
 @Serializable
 data class MealDto(
-    val idMeal: String?= null,
+    val idMeal: String,
     val strMeal: String?= null,
     val strDrinkAlternate: String?= null,
     val strCategory: String?= null,

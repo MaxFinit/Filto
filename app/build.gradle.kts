@@ -49,7 +49,6 @@ dependencies {
     implementation(project(":feature:feed"))
     implementation(project(":feature:favorites"))
     implementation(project(":feature:recipe"))
-
     implementation(project(":core:ui"))
 
     implementation(libs.bundles.androidx)

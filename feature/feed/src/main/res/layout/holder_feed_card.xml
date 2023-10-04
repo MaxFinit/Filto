@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -7,48 +9,88 @@
             name="mealData"
             type="com.maxfin.filto.data.model.Meal" />
 
+        <variable
+            name="isSelectedValue"
+            type="Boolean" />
+
     </data>
 
 <com.google.android.material.card.MaterialCardView
     style="@style/Card.Recipe"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
 
+
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/photo"
+            loadImageFromUrl="@{mealData.strMealThumb}"
+            setBlur="@{isSelectedValue}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
-            loadImageFromUrl="@{mealData.strMealThumb}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/Rectangle_28" />
+
+
+        <View
+            android:id="@+id/alphaView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0.56"
+            isShowFade="@{isSelectedValue}"
+            android:visibility="gone"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ingredientContainer"
+            formatIngredients="@{mealData.strIngredient}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            isShowFade="@{isSelectedValue}"
+            android:visibility="gone"
+            android:layout_marginHorizontal="56dp"
+            app:layout_constraintBottom_toBottomOf="@+id/photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/name"
             style="@style/Text.Title.Large"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingVertical="16dp"
-            android:paddingHorizontal="16dp"
-            android:textColor="@color/redDark"
             android:background="@color/white"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="16dp"
             android:text="@{mealData.strMeal}"
+            android:textColor="@color/redDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:text="Рыба речная" />
 
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
 

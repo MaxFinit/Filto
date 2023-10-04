@@ -19,10 +19,11 @@ class FeedCardHolder(private val meal: Meal) :
         return HolderFeedCardBinding.inflate(inflater, parent, false)
     }
 
-
     override fun bindView(binding: HolderFeedCardBinding, payloads: List<Any>) {
+        super.bindView(binding, payloads)
+        binding.isSelectedValue = isSelected
         binding.mealData = meal
-        binding.executePendingBindings()
+//        binding.executePendingBindings()
     }
 
 

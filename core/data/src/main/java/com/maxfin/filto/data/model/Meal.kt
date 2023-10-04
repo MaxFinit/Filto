@@ -1,7 +1,7 @@
 package com.maxfin.filto.data.model
 
 data class Meal(
-    val idMeal: String?,
+    val idMeal: String,
     val strMeal: String?,
     val strDrinkAlternate: String?,
     val strCategory: String?,
